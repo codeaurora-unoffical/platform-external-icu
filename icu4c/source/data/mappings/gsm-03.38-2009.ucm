@@ -1,9 +1,10 @@
-# Copyright (c) 2000 Unicode, Inc.  All Rights reserved.
+# Copyright (C) 2017 and later: Unicode, Inc. and others.
+# License & terms of use: http://www.unicode.org/copyright.html
 #
 # Name:             GSM 03.38 to Unicode
 # Unicode version:  3.0
-# Table version:    1.1
-# Date:             2000 May 30
+# Table version:    2.0
+# Date:             2009 Nov 10
 # Authors:          Ken Whistler
 #                   Kent Karlsson
 #                   Markus Kuhn
@@ -11,6 +12,7 @@
 # Source:           http://www.unicode.org/Public/MAPPINGS/ETSI/GSM0338.TXT
 # See there for the license and for a description of the charset.
 # Formatted into ICU .ucm format by Markus Scherer on 2006-nov-02.
+# Updated to table version 2.0 by Fredrik Roubert on 2017-feb-08.
 # Commented-out mappings are turned into fallbacks (|1), all others are turned
 # into round-trips (|0).
 # Multi-byte mappings are preserved as multi-single-byte character mappings,
@@ -49,7 +51,7 @@
 # For issues with the mappings please contact Unicode
 # at http://www.unicode.org/reporting.html
 
-<code_set_name>     "gsm-03.38-2000"
+<code_set_name>     "gsm-03.38-2009"
 <char_name_mask>    "AXXXX"
 <mb_cur_max>        1
 <mb_cur_min>        1
@@ -207,7 +209,7 @@ CHARMAP
 <U03A1> \x50 |1
 <U03A3> \x18 |0
 <U03A4> \x54 |1
-<U03A5> \x55 |1
+<U03A5> \x59 |1
 <U03A6> \x12 |0
 <U03A7> \x58 |1
 <U03A8> \x17 |0
