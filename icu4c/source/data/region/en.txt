@@ -72,9 +72,9 @@ en{
         BZ{"Belize"}
         CA{"Canada"}
         CC{"Cocos (Keeling) Islands"}
-        CD{"Congo (DRC)"}
+        CD{"Congo - Kinshasa"}
         CF{"Central African Republic"}
-        CG{"Congo (Republic)"}
+        CG{"Congo - Brazzaville"}
         CH{"Switzerland"}
         CI{"Côte d’Ivoire"}
         CK{"Cook Islands"}
@@ -306,8 +306,6 @@ en{
         CG{"Congo (Republic)"}
         CI{"Ivory Coast"}
         CZ{"Czech Republic"}
-        FK{"Falkland Islands (Islas Malvinas)"}
-        MK{"Macedonia (FYROM)"}
         TL{"East Timor"}
     }
     Version{"2.1.30.50"}

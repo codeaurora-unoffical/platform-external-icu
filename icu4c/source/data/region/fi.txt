@@ -108,7 +108,7 @@ fi{
         EU{"Euroopan unioni"}
         FI{"Suomi"}
         FJ{"Fidži"}
-        FK{"Falklandinsaaret"}
+        FK{"Falklandinsaaret (Malvinassaaret)"}
         FM{"Mikronesian liittovaltio"}
         FO{"Färsaaret"}
         FR{"Ranska"}
@@ -181,7 +181,7 @@ fi{
         MF{"Saint-Martin"}
         MG{"Madagaskar"}
         MH{"Marshallinsaaret"}
-        MK{"Makedonia"}
+        MK{"EJT Makedonia"}
         ML{"Mali"}
         MM{"Myanmar (Burma)"}
         MN{"Mongolia"}
@@ -303,8 +303,6 @@ fi{
         CG{"Kongo-Brazzaville"}
         CI{"Côte d’Ivoire"}
         CZ{"Tšekki"}
-        FK{"Falklandinsaaret (Malvinassaaret)"}
-        MK{"EJT Makedonia"}
         TL{"Timor-Leste"}
     }
     Version{"2.1.29.88"}

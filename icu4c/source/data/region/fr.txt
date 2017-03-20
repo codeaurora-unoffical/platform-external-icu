@@ -108,7 +108,7 @@ fr{
         EU{"Union européenne"}
         FI{"Finlande"}
         FJ{"Fidji"}
-        FK{"Îles Malouines"}
+        FK{"Îles Falkland"}
         FM{"États fédérés de Micronésie"}
         FO{"Îles Féroé"}
         FR{"France"}
@@ -181,7 +181,7 @@ fr{
         MF{"Saint-Martin"}
         MG{"Madagascar"}
         MH{"Îles Marshall"}
-        MK{"Macédoine"}
+        MK{"Macédoine (ARYM)"}
         ML{"Mali"}
         MM{"Myanmar (Birmanie)"}
         MN{"Mongolie"}
@@ -302,8 +302,6 @@ fr{
         CD{"Congo (RDC)"}
         CG{"République du Congo"}
         CZ{"République tchèque"}
-        FK{"Îles Falkland"}
-        MK{"Macédoine (ARYM)"}
         TL{"Timor-Oriental"}
     }
     Version{"2.1.28.79"}

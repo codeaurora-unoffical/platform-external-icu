@@ -108,7 +108,7 @@ gd{
         EU{"An t-Aonadh Eòrpach"}
         FI{"An Fhionnlann"}
         FJ{"Fìdi"}
-        FK{"Na h-Eileanan Fàclannach"}
+        FK{"Na h-Eileanan Fàclannach (Islas Malvinas)"}
         FM{"Na Meanbh-eileanan"}
         FO{"Na h-Eileanan Fàro"}
         FR{"An Fhraing"}
@@ -181,7 +181,7 @@ gd{
         MF{"Naomh Màrtainn"}
         MG{"Madagasgar"}
         MH{"Eileanan Mharshall"}
-        MK{"A’ Mhasadon"}
+        MK{"A’ Mhasadon (FYROM)"}
         ML{"Màili"}
         MM{"Miànmar"}
         MN{"Dùthaich nam Mongol"}
@@ -301,8 +301,6 @@ gd{
         CG{"A’ Chongo"}
         CI{"An Costa Ìbhri"}
         CZ{"Poblachd na Seice"}
-        FK{"Na h-Eileanan Fàclannach (Islas Malvinas)"}
-        MK{"A’ Mhasadon (FYROM)"}
         TL{"Tìomor an Ear"}
     }
     Version{"2.1.28.76"}

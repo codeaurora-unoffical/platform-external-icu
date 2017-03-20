@@ -108,7 +108,7 @@ eu{
         EU{"Europar Batasuna"}
         FI{"Finlandia"}
         FJ{"Fiji"}
-        FK{"Malvinak"}
+        FK{"Falkland uharteak (Malvina uharteak)"}
         FM{"Mikronesia"}
         FO{"Faroe uharteak"}
         FR{"Frantzia"}
@@ -181,7 +181,7 @@ eu{
         MF{"San Martin"}
         MG{"Madagaskar"}
         MH{"Marshall uharteak"}
-        MK{"Mazedonia"}
+        MK{"Mazedonia (Mazedoniako Yugoslaviar Errepublika ohia)"}
         ML{"Mali"}
         MM{"Myanmar (Birmania)"}
         MN{"Mongolia"}
@@ -300,8 +300,6 @@ eu{
         CD{"Kongo (KED)"}
         CG{"Kongo (errepublika)"}
         CZ{"Txekiar Errepublika"}
-        FK{"Falkland uharteak (Malvina uharteak)"}
-        MK{"Mazedonia (Mazedoniako Yugoslaviar Errepublika ohia)"}
         TL{"Timor ekialdea"}
     }
     Version{"2.1.29.20"}
