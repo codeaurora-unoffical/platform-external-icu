@@ -15,18 +15,24 @@
  */
 package com.android.icu4j.srcgen;
 
+import static com.google.currysrc.api.process.Rules.createMandatoryRule;
+import static com.google.currysrc.api.process.Rules.createOptionalRule;
+
+import org.eclipse.jdt.core.JavaCore;
+import org.eclipse.jdt.core.formatter.DefaultCodeFormatterConstants;
+
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 import com.google.currysrc.Main;
-import com.google.currysrc.api.Rules;
+import com.google.currysrc.api.RuleSet;
 import com.google.currysrc.api.input.InputFileGenerator;
 import com.google.currysrc.api.output.BasicOutputSourceFileGenerator;
 import com.google.currysrc.api.output.OutputSourceFileGenerator;
-import com.google.currysrc.api.process.DefaultRule;
 import com.google.currysrc.api.process.Rule;
 import com.google.currysrc.api.process.ast.BodyDeclarationLocator;
 import com.google.currysrc.api.process.ast.BodyDeclarationLocators;
 import com.google.currysrc.api.process.ast.TypeLocator;
+import com.google.currysrc.processors.AddAnnotation;
 import com.google.currysrc.processors.HidePublicClasses;
 import com.google.currysrc.processors.InsertHeader;
 import com.google.currysrc.processors.ModifyQualifiedNames;
@@ -37,11 +43,11 @@ import com.google.currysrc.processors.ReplaceTextCommentScanner;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
-
-import static com.android.icu4j.srcgen.Icu4jTransformRules.createMandatoryRule;
-import static com.android.icu4j.srcgen.Icu4jTransformRules.createOptionalRule;
+import java.util.Map;
 
 /**
  * Applies Android's ICU4J source code transformation rules. If you make any changes to this class
@@ -62,6 +68,9 @@ public class Icu4jTransform {
       "android.icu.math.BigDecimal",
       "android.icu.math.MathContext",
       "android.icu.text.AlphabeticIndex",
+      "android.icu.text.Bidi",
+      "android.icu.text.BidiClassifier",
+      "android.icu.text.BidiRun",
       "android.icu.text.BreakIterator",
       "android.icu.text.CaseMap",
       "android.icu.text.CollationKey",
@@ -154,6 +163,7 @@ public class Icu4jTransform {
       "field:android.icu.lang.UProperty#UNDEFINED",
       "field:android.icu.lang.UProperty#UNICODE_1_NAME",
       "field:android.icu.lang.UScript#DUPLOYAN_SHORTAND",
+      "field:android.icu.text.Bidi#CLASS_DEFAULT",
       "field:android.icu.text.CaseMap#internalOptions",
       "field:android.icu.text.DateFormat#ABBR_STANDALONE_MONTH",
       "field:android.icu.text.DateFormat#DATE_SKELETONS",
@@ -510,7 +520,13 @@ public class Icu4jTransform {
       "type:android.icu.util.ULocale$Minimize",
   };
 
-  /** A set of declarations we don't want to expose in Android. */
+  /** A set of declarations we don't want to expose in Android.
+    * We generally hide:
+    * Any API we find that relates to a final static primitive that a compiler could inline
+    * and could change between ICU releases.
+    * Methods that relate to registration of static defaults / factories, which cannot be
+    * configured on Android "before use", because a lot of initialization happens in the zygote.
+    */
   private static final String[] DECLARATIONS_TO_HIDE = {
       /* ASCII order please. */
       "field:android.icu.lang.UCharacter$BidiPairedBracketType#COUNT",
@@ -535,6 +551,7 @@ public class Icu4jTransform {
       "field:android.icu.lang.UProperty#STRING_LIMIT",
       "field:android.icu.lang.UProperty$NameChoice#COUNT",
       "field:android.icu.lang.UScript#CODE_LIMIT",
+      "field:android.icu.text.BidiClassifier#context",
       "field:android.icu.text.CollationKey$BoundMode#COUNT",
       "field:android.icu.text.Collator$ReorderCodes#LIMIT",
       "field:android.icu.text.DateFormat#FIELD_COUNT",
@@ -616,10 +633,19 @@ public class Icu4jTransform {
    * java com.android.icu4j.srcgen.Icu4JTransform {source files/directories} {target dir}
    */
   public static void main(String[] args) throws Exception {
-    new Main(DEBUG).execute(new Icu4jRules(args));
+    Map<String, String> options = JavaCore.getOptions();
+    options.put(JavaCore.COMPILER_COMPLIANCE, JavaCore.VERSION_1_8);
+    options.put(JavaCore.COMPILER_SOURCE, JavaCore.VERSION_1_8);
+    options.put(JavaCore.COMPILER_DOC_COMMENT_SUPPORT, JavaCore.ENABLED);
+    options.put(DefaultCodeFormatterConstants.FORMATTER_TAB_CHAR, JavaCore.SPACE);
+    options.put(DefaultCodeFormatterConstants.FORMATTER_TAB_SIZE, "4");
+
+    new Main(DEBUG)
+        .setJdtOptions(options)
+        .execute(new Icu4jRules(args));
   }
 
-  static class Icu4jRules implements Rules {
+  static class Icu4jRules implements RuleSet {
 
     private static final String SOURCE_CODE_HEADER = "/* GENERATED SOURCE. DO NOT MODIFY. */\n";
 
@@ -628,16 +654,19 @@ public class Icu4jTransform {
     private final BasicOutputSourceFileGenerator outputSourceFileGenerator;
 
     public Icu4jRules(String[] args) throws IOException {
-      if (args.length < 2) {
-        throw new IllegalArgumentException("At least 2 arguments required.");
+      if (args.length < 3) {
+        throw new IllegalArgumentException(
+                "Usage: " + Icu4jTransform.class.getCanonicalName()
+                        + " <source-dir>+ <target-dir> <core-platform-api-file>");
       }
 
-      String[] inputDirNames = new String[args.length - 1];
-      System.arraycopy(args, 0, inputDirNames, 0, args.length - 1);
+      String[] inputDirNames = new String[args.length - 2];
+      System.arraycopy(args, 0, inputDirNames, 0, args.length - 2);
       inputFileGenerator = Icu4jTransformRules.createInputFileGenerator(inputDirNames);
-      rules = createTransformRules();
+      Path corePlatformApiFile = Paths.get(args[args.length - 1]);
+      rules = createTransformRules(corePlatformApiFile);
       outputSourceFileGenerator =
-          Icu4jTransformRules.createOutputFileGenerator(args[args.length - 1]);
+          Icu4jTransformRules.createOutputFileGenerator(args[args.length - 2]);
     }
 
     @Override
@@ -672,7 +701,7 @@ public class Icu4jTransform {
       };
     }
 
-    private static List<Rule> createTransformRules() throws IOException {
+    private static List<Rule> createTransformRules(Path corePlatformApiFile) throws IOException {
       // The rules needed to repackage source code that declares or references com.ibm.icu code
       // so it references android.icu instead.
       Rule[] repackageRules = getRepackagingRules();
@@ -712,6 +741,10 @@ public class Icu4jTransform {
           // AST change: Translate some of the @.jcite tags used by ICU into @sample tags used by
           // doclava. Those that are not translated are escaped.
           createTranslateJciteInclusionRule(),
+
+          // AST change: Add CorePlatformApi to specified classes and members
+          createOptionalRule(new AddAnnotation("libcore.api.CorePlatformApi",
+              BodyDeclarationLocators.readBodyDeclarationLocators(corePlatformApiFile))),
       };
 
       List<Rule> rulesList = Lists.newArrayList(repackageRules);
