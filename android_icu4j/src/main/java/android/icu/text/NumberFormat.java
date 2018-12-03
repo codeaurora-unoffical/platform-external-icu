@@ -39,7 +39,7 @@ import android.icu.util.UResourceBundle;
  *
  * <p>
  * <strong>IMPORTANT:</strong> New users are strongly encouraged to see if
- * {@link NumberFormatter} fits their use case.  Although not deprecated, this
+ * {@code NumberFormatter} fits their use case.  Although not deprecated, this
  * class, NumberFormat, is only provided for java.text.NumberFormat compatibility.
  * <hr>
  *
@@ -759,6 +759,7 @@ public abstract class NumberFormat extends UFormat {
      * one of these two methods <b>MUST</b> be overridden or else an infinite
      * loop will occur.
      *
+     * @hide Only a subset of ICU is exposed in Android
      * @hide unsupported on Android
      */
     public static abstract class NumberFormatFactory {
@@ -843,6 +844,7 @@ public abstract class NumberFormat extends UFormat {
 
     /**
      * A NumberFormatFactory that supports a single locale.  It can be visible or invisible.
+     * @hide Only a subset of ICU is exposed in Android
      * @hide unsupported on Android
      */
     public static abstract class SimpleNumberFormatFactory extends NumberFormatFactory {
