@@ -60,71 +60,136 @@ public class Icu4jTransform {
   static final String[] PUBLIC_API_CLASSES = new String[] {
       /* ASCII order please. */
       "android.icu.lang.UCharacter",
+      "android.icu.lang.UCharacter$BidiPairedBracketType",
+      "android.icu.lang.UCharacter$DecompositionType",
+      "android.icu.lang.UCharacter$EastAsianWidth",
+      "android.icu.lang.UCharacter$GraphemeClusterBreak",
+      "android.icu.lang.UCharacter$HangulSyllableType",
+      "android.icu.lang.UCharacter$JoiningGroup",
+      "android.icu.lang.UCharacter$JoiningType",
+      "android.icu.lang.UCharacter$LineBreak",
+      "android.icu.lang.UCharacter$NumericType",
+      "android.icu.lang.UCharacter$SentenceBreak",
+      "android.icu.lang.UCharacter$UnicodeBlock",
+      "android.icu.lang.UCharacter$WordBreak",
       "android.icu.lang.UCharacterCategory",
       "android.icu.lang.UCharacterDirection",
       "android.icu.lang.UCharacterEnums",
+      "android.icu.lang.UCharacterEnums$ECharacterCategory",
+      "android.icu.lang.UCharacterEnums$ECharacterDirection",
       "android.icu.lang.UProperty",
+      "android.icu.lang.UProperty$NameChoice",
       "android.icu.lang.UScript",
+      "android.icu.lang.UScript$ScriptUsage",
       "android.icu.math.BigDecimal",
       "android.icu.math.MathContext",
       "android.icu.text.AlphabeticIndex",
+      "android.icu.text.AlphabeticIndex$Bucket",
+      "android.icu.text.AlphabeticIndex$Bucket$LabelType",
+      "android.icu.text.AlphabeticIndex$ImmutableIndex",
+      "android.icu.text.AlphabeticIndex$Record",
       "android.icu.text.Bidi",
       "android.icu.text.BidiClassifier",
       "android.icu.text.BidiRun",
       "android.icu.text.BreakIterator",
       "android.icu.text.CaseMap",
-      "android.icu.text.CollationKey",
-      "android.icu.text.Collator",
+      "android.icu.text.CaseMap$Fold",
+      "android.icu.text.CaseMap$Lower",
+      "android.icu.text.CaseMap$Title",
+      "android.icu.text.CaseMap$Upper",
       "android.icu.text.CollationElementIterator",
+      "android.icu.text.CollationKey",
+      "android.icu.text.CollationKey$BoundMode",
+      "android.icu.text.Collator",
+      "android.icu.text.Collator$CollatorFactory",
+      "android.icu.text.Collator$ReorderCodes",
       "android.icu.text.CompactDecimalFormat",
+      "android.icu.text.CompactDecimalFormat$CompactStyle",
       "android.icu.text.CurrencyPluralInfo",
       "android.icu.text.DateFormat",
+      "android.icu.text.DateFormat$BooleanAttribute",
+      "android.icu.text.DateFormat$Field",
       "android.icu.text.DateFormatSymbols",
-      "android.icu.text.DateIntervalInfo",
       "android.icu.text.DateIntervalFormat",
+      "android.icu.text.DateIntervalInfo",
+      "android.icu.text.DateIntervalInfo$PatternInfo",
       "android.icu.text.DateTimePatternGenerator",
+      "android.icu.text.DateTimePatternGenerator$PatternInfo",
       "android.icu.text.DecimalFormat",
       "android.icu.text.DecimalFormatSymbols",
       "android.icu.text.DisplayContext",
+      "android.icu.text.DisplayContext$Type",
       "android.icu.text.Edits",
+      "android.icu.text.Edits$Iterator",
       "android.icu.text.IDNA",
+      "android.icu.text.IDNA$Error",
+      "android.icu.text.IDNA$Info",
       "android.icu.text.ListFormatter",
       "android.icu.text.LocaleDisplayNames",
+      "android.icu.text.LocaleDisplayNames$DialectHandling",
       "android.icu.text.LocaleDisplayNames$UiListItem",
       "android.icu.text.MeasureFormat",
+      "android.icu.text.MeasureFormat$FormatWidth",
       "android.icu.text.MessageFormat",
+      "android.icu.text.MessageFormat$Field",
       "android.icu.text.MessagePattern",
+      "android.icu.text.MessagePattern$ApostropheMode",
+      "android.icu.text.MessagePattern$ArgType",
+      "android.icu.text.MessagePattern$Part",
+      "android.icu.text.MessagePattern$Part$Type",
       "android.icu.text.Normalizer",
+      "android.icu.text.Normalizer$QuickCheckResult",
       "android.icu.text.Normalizer2",
+      "android.icu.text.Normalizer2$Mode",
       "android.icu.text.NumberFormat",
+      "android.icu.text.NumberFormat$Field",
       "android.icu.text.NumberingSystem",
       "android.icu.text.PluralFormat",
       "android.icu.text.PluralRules",
+      "android.icu.text.PluralRules$PluralType",
       "android.icu.text.RelativeDateTimeFormatter",
+      "android.icu.text.RelativeDateTimeFormatter$AbsoluteUnit",
+      "android.icu.text.RelativeDateTimeFormatter$Direction",
+      "android.icu.text.RelativeDateTimeFormatter$RelativeDateTimeUnit",
+      "android.icu.text.RelativeDateTimeFormatter$RelativeUnit",
+      "android.icu.text.RelativeDateTimeFormatter$Style",
       "android.icu.text.Replaceable",
       "android.icu.text.RuleBasedCollator",
       "android.icu.text.ScientificNumberFormatter",
       "android.icu.text.SearchIterator",
+      "android.icu.text.SearchIterator$ElementComparisonType",
       "android.icu.text.SelectFormat",
       "android.icu.text.SimpleDateFormat",
       "android.icu.text.StringPrepParseException",
       "android.icu.text.StringSearch",
       "android.icu.text.SymbolTable",
       "android.icu.text.TimeZoneFormat",
+      "android.icu.text.TimeZoneFormat$GMTOffsetPatternType",
+      "android.icu.text.TimeZoneFormat$ParseOption",
+      "android.icu.text.TimeZoneFormat$Style",
+      "android.icu.text.TimeZoneFormat$TimeType",
       "android.icu.text.TimeZoneNames",
+      "android.icu.text.TimeZoneNames$NameType",
       "android.icu.text.UCharacterIterator",
       "android.icu.text.UFormat",
       "android.icu.text.UnicodeFilter",
       "android.icu.text.UnicodeMatcher",
       "android.icu.text.UnicodeSet",
+      "android.icu.text.UnicodeSet$ComparisonStyle",
+      "android.icu.text.UnicodeSet$EntryRange",
+      "android.icu.text.UnicodeSet$SpanCondition",
       "android.icu.text.UnicodeSetIterator",
       "android.icu.text.UnicodeSetSpanner",
+      "android.icu.text.UnicodeSetSpanner$CountMethod",
+      "android.icu.text.UnicodeSetSpanner$TrimOption",
       "android.icu.util.BuddhistCalendar",
-      "android.icu.util.Calendar",
       "android.icu.util.CECalendar",
+      "android.icu.util.Calendar",
+      "android.icu.util.Calendar$WeekData",
       "android.icu.util.ChineseCalendar",
       "android.icu.util.CopticCalendar",
       "android.icu.util.Currency",
+      "android.icu.util.Currency$CurrencyUsage",
       "android.icu.util.CurrencyAmount",
       "android.icu.util.DateInterval",
       "android.icu.util.EthiopicCalendar",
@@ -135,18 +200,26 @@ public class Icu4jTransform {
       "android.icu.util.IllformedLocaleException",
       "android.icu.util.IndianCalendar",
       "android.icu.util.IslamicCalendar",
+      "android.icu.util.IslamicCalendar$CalculationType",
       "android.icu.util.JapaneseCalendar",
       "android.icu.util.LocaleData",
+      "android.icu.util.LocaleData$MeasurementSystem",
+      "android.icu.util.LocaleData$PaperSize",
       "android.icu.util.Measure",
       "android.icu.util.MeasureUnit",
       "android.icu.util.Output",
       "android.icu.util.RangeValueIterator",
+      "android.icu.util.RangeValueIterator$Element",
       "android.icu.util.TaiwanCalendar",
       "android.icu.util.TimeUnit",
       "android.icu.util.TimeZone",
+      "android.icu.util.TimeZone$SystemTimeZoneType",
       "android.icu.util.ULocale",
+      "android.icu.util.ULocale$Builder",
+      "android.icu.util.ULocale$Category",
       "android.icu.util.UniversalTimeScale",
       "android.icu.util.ValueIterator",
+      "android.icu.util.ValueIterator$Element",
       "android.icu.util.VersionInfo",
   };
 
@@ -629,8 +702,24 @@ public class Icu4jTransform {
   }
 
   /**
-   * Usage:
-   * java com.android.icu4j.srcgen.Icu4JTransform {source files/directories} {target dir}
+   * Usage: See {@link Icu4jRules#COMMAND_USAGE}
+   *
+   * The option --hide-non-whitelisted-api can be used to explicitly describe the API surface to be
+   * exposed; anything not in the list will be hidden in additional to other rules. This is useful
+   * when upgrading ICU when we haven't yet added new classes/methods to various hard-coded lists
+   * described below.
+   *
+   * This tool hides the following in the knowledge that classes that are not explicitly
+   * hidden are exposed in the public API set:
+   *
+   * 1) Public classes that are not in the PUBLIC_API_CLASSES list.
+   * 2) Types / fields / methods that were deprecated when the class was first exposed in Android,
+   *    listed in INITIAL_DEPRECATED_SET
+   * 3) Types / fields / methods that we explicitly want to hide, listed in DECLARATIONS_TO_HIDE
+   * 4) Types / fields / methods that are flagged with ICU javadoc as draft / provisional or
+   *    internal.
+   * 5) If the --hide-non-whitelisted-api option is provided, types / fields / methods that are not
+   *    in the whitelisted-api-file.
    */
   public static void main(String[] args) throws Exception {
     Map<String, String> options = JavaCore.getOptions();
@@ -648,6 +737,9 @@ public class Icu4jTransform {
   static class Icu4jRules implements RuleSet {
 
     private static final String SOURCE_CODE_HEADER = "/* GENERATED SOURCE. DO NOT MODIFY. */\n";
+    private static final String COMMAND_USAGE = "Usage: " + Icu4jTransform.class.getCanonicalName()
+            + " [--hide-non-whitelisted-api <whitelisted-api-file>]"
+            + " <source-dir>+ <target-dir> <core-platform-api-file>";
 
     private final InputFileGenerator inputFileGenerator;
     private final List<Rule> rules;
@@ -655,16 +747,24 @@ public class Icu4jTransform {
 
     public Icu4jRules(String[] args) throws IOException {
       if (args.length < 3) {
-        throw new IllegalArgumentException(
-                "Usage: " + Icu4jTransform.class.getCanonicalName()
-                        + " <source-dir>+ <target-dir> <core-platform-api-file>");
+        throw new IllegalArgumentException(COMMAND_USAGE);
+      }
+      Path whitelistedApiPath = null;
+      if ("--hide-non-whitelisted-api".equals(args[0])) {
+        whitelistedApiPath = Paths.get(args[1]);
+        if (args.length < 5) {
+          throw new IllegalArgumentException(COMMAND_USAGE);
+        }
+        String[] newArgs = new String[args.length - 2];
+        System.arraycopy(args, 2, newArgs, 0, args.length - 2);
+        args = newArgs;
       }
 
       String[] inputDirNames = new String[args.length - 2];
       System.arraycopy(args, 0, inputDirNames, 0, args.length - 2);
       inputFileGenerator = Icu4jTransformRules.createInputFileGenerator(inputDirNames);
       Path corePlatformApiFile = Paths.get(args[args.length - 1]);
-      rules = createTransformRules(corePlatformApiFile);
+      rules = createTransformRules(corePlatformApiFile, whitelistedApiPath);
       outputSourceFileGenerator =
           Icu4jTransformRules.createOutputFileGenerator(args[args.length - 2]);
     }
@@ -701,7 +801,8 @@ public class Icu4jTransform {
       };
     }
 
-    private static List<Rule> createTransformRules(Path corePlatformApiFile) throws IOException {
+    private static List<Rule> createTransformRules(Path corePlatformApiFile,
+            Path whitelistedApiPath) throws IOException {
       // The rules needed to repackage source code that declares or references com.ibm.icu code
       // so it references android.icu instead.
       Rule[] repackageRules = getRepackagingRules();
@@ -716,19 +817,24 @@ public class Icu4jTransform {
           createOptionalRule(
               new ReplaceTextCommentScanner(ORIGINAL_ICU_PACKAGE, ANDROID_ICU_PACKAGE)),
 
-          // AST change: Hide all ICU public classes except those in the whitelist.
+          // AST change: Hide all ICU public classes except those in the PUBLIC_API_CLASSES
+          // whitelist.
           createHidePublicClassesRule(),
 
-          // AST change: Hide ICU methods that are deprecated and Android does not want to make
-          // public.
+          // AST change: Hide ICU methods that are in INITIAL_DEPRECATED_SET and Android does not
+          // want to make public.
           createHideOriginalDeprecatedClassesRule(),
-          // AST change: Explicitly hide blacklisted methods such as those that get/set static
-          // default values that might lead to confusion or strange interactions between Android's
-          // ICU4J and java.text / java.util classes.
+          // AST change: Explicitly hide blacklisted methods in DECLARATIONS_TO_HIDE such as those
+          // that get/set static default values that might lead to confusion or strange interactions
+          // between Android's ICU4J and java.text / java.util classes.
           createHideBlacklistedDeclarationsRule(),
           // AST change: Explicitly hide any elements that are marked as
           // @draft / @provisional / @internal
           createOptionalRule(new HideDraftProvisionalInternal()),
+
+          // AST change: Hide new non-whitelisted API in Android temporarily
+          // Usually used for avoiding the new API introduced by upstream to show up in Android.
+          createHideNonWhitelistedRule(whitelistedApiPath),
 
           // AST change: Remove JavaDoc tags that Android has no need of:
           // @hide has been added in place of @draft, @provisional and @internal
@@ -784,5 +890,15 @@ public class Icu4jTransform {
               apiClassesWhitelistBuilder.build(),
               "Only a subset of ICU is exposed in Android"));
     }
+  }
+
+  private static Rule createHideNonWhitelistedRule(Path whitelistedApiPath) {
+    List<BodyDeclarationLocator> bodyDeclarationLocators = null;
+    if (whitelistedApiPath != null) {
+      bodyDeclarationLocators = BodyDeclarationLocators.readBodyDeclarationLocators(
+              whitelistedApiPath);
+    }
+    return createOptionalRule(new HideNonWhitelistedDeclarations(bodyDeclarationLocators,
+            "@hide Hide new API in Android temporarily"));
   }
 }
