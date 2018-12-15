@@ -138,7 +138,6 @@ public class DecimalFormatSymbols implements Cloneable, Serializable {
      * @param locale the locale.
      * @param ns the numbering system.
      * @return A DecimalFormatSymbols instance.
-     * @hide draft / provisional / internal are hidden on Android
      */
     public static DecimalFormatSymbols forNumberingSystem(Locale locale, NumberingSystem ns) {
         return new DecimalFormatSymbols(locale, ns);
@@ -157,7 +156,6 @@ public class DecimalFormatSymbols implements Cloneable, Serializable {
      * @param locale the locale.
      * @param ns the numbering system.
      * @return A DecimalFormatSymbols instance.
-     * @hide draft / provisional / internal are hidden on Android
      */
     public static DecimalFormatSymbols forNumberingSystem(ULocale locale, NumberingSystem ns) {
         return new DecimalFormatSymbols(locale, ns);
@@ -1852,6 +1850,7 @@ public class DecimalFormatSymbols implements Cloneable, Serializable {
      * @see android.icu.util.ULocale#ACTUAL_LOCALE
      * @hide draft / provisional / internal are hidden on Android
      */
+    @dalvik.annotation.compat.UnsupportedAppUsage
     public final ULocale getLocale(ULocale.Type type) {
         return type == ULocale.ACTUAL_LOCALE ?
             this.actualLocale : this.validLocale;
