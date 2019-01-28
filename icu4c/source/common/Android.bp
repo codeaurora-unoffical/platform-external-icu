@@ -43,7 +43,6 @@ cc_defaults {
         "-std=c++11",
     ],
 
-    export_include_dirs: ["."],
     rtti: true,
 
     required: ["icu-data"],
@@ -51,9 +50,23 @@ cc_defaults {
     target: {
         android: {
             cflags: [
+                "-DANDROID_LINK_SHARED_ICU4C",
                 "-DPIC",
                 "-fPIC",
             ],
+        },
+    },
+}
+
+cc_library_headers {
+    name: "libicuuc_headers",
+    host_supported: true,
+    header_libs: [ "icu4c_extra_headers" ],
+    export_header_lib_headers: [ "icu4c_extra_headers" ],
+    export_include_dirs: ["."],
+    target: {
+        windows: {
+            enabled: true,
         },
     },
 }
@@ -66,5 +79,19 @@ cc_library {
     host_supported: true,
     unique_host_soname: true,
     defaults: ["libicuuc_defaults"],
-    static_libs: ["libicuuc_stubdata"],
+    target: {
+        android: {
+            static_libs: ["libicuuc_stubdata"],
+        },
+        not_windows: {
+            static_libs: ["libicuuc_stubdata"],
+        },
+        windows: {
+            enabled: true,
+            // Windows requires importing data as a DLL when building with U_COMMON_IMPLEMENTATION
+            shared_libs: ["libicuuc_stubdata"],
+        },
+    },
+    header_libs: [ "libicuuc_headers" ],
+    export_header_lib_headers: [ "libicuuc_headers" ],
 }
